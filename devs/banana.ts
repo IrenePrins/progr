@@ -1,36 +1,24 @@
-class Banana{
+/// <reference path="gameElement.ts" />
 
-    private div : HTMLElement
-    private x : number = 0
-    private y : number = 0
+class Banana extends GameElement{
 
-    private screenWidth = window.innerWidth
-    private screenHeight = window.innerHeight
 
-    constructor(){
-        this.div = document.createElement("banana")
-        document.body.appendChild(this.div)
+    constructor(x : number, y : number){
+        super(x,y, "banana")
         
-        this.position()
+        this.draw()
     }
     
     public update() : void{
 
-        
-        
-    }
-
-    public position(){
-        this.x = Math.random() * this.screenWidth
-        this.y = Math.random() * this.screenHeight
     }
 
     public getRectangle(){
         return this.div.getBoundingClientRect()
     }
 
-    public removeBanana(){
+    /*public removeBanana(){
         this.div.remove()
         
-    }
+    }*/
 }

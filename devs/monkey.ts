@@ -1,10 +1,11 @@
-class Monkey{
-    
-    private div : HTMLElement
+/// <reference path="gameElement.ts" />
 
-    constructor(left : number, right : number){
-        this.div = document.createElement("monkey")
-        document.body.appendChild(this.div)
+class Monkey extends GameElement{
+    
+    constructor(x : number, y : number){
+
+        super( x, y, "monkey")
+        
     }
 
     public update() : void{

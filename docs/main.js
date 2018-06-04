@@ -18,9 +18,6 @@ var Banana = (function () {
     Banana.prototype.getRectangle = function () {
         return this.div.getBoundingClientRect();
     };
-    Banana.prototype.removeBanana = function () {
-        this.div.remove();
-    };
     return Banana;
 }());
 var Fireball = (function () {

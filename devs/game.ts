@@ -11,15 +11,15 @@ class Game{
    
         constructor(){
 
-            this.monkey = new Monkey(37, 39)
+            this.monkey = new Monkey(window.innerWidth / 2, 0)
                     
             for(let i = 0; i < 10; i++){
-                this.bananas.push(new Banana)
+                this.bananas.push(new Banana())
                 
             }
 
             for(let i = 0; i < 10 ; i++){
-                this.fireballs.push(new Fireball)
+                this.fireballs.push(new Fireball(Math.random() * window.innerWidth, Math.random() * -5000))
             }
             
             this.gameLoop()
