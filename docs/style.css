@@ -1,11 +1,54 @@
-monkey {
-    background-image: url(../assets/monkey.png)
+* {
+    position: absolute;
 }
 
 body { 
-    background-image: url(../assets/jungle.jpg)
+    background-image: url(../assets/jungle.jpg);
+}
+body * {
+    display: block;
+    overflow: hidden;
 }
 
+
+monkey {
+    
+    width: 255px;
+    height: 255px;
+    
+    
+}
+
+.monkey {
+    background-image: url(../assets/monkeyklein.png);
+}
+
+.monkeyleft{
+    background-image: url(../assets/monkeyklein_left.png)
+}
+
+.monkeyright{
+    background-image: url(../assets/monkeyklein.png)
+}
+
+
 banana{ 
-    background-image: url(../assets/banana.png)
+    background-image: url(../assets/bananaklein.png);
+    width: 162px; 
+    height: 120px;
+    
+}
+
+fireball {
+    background-image: url(../assets/fireball.png);
+    width: 130px; height: 130px;
+    
+}
+
+score{
+    font-size: 40px;
+    padding-right: auto;
+    padding-left: auto;
+    font-family: Stencil, Verdana, Geneva, Tahoma, sans-serif;
+    color: #2e2e2e;
 }

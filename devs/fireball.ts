@@ -8,13 +8,14 @@ class Fireball extends GameElement{
         super(x, y, "fireball")
 
         this.ySpeed = 3
+        this.update()
      
     }
 
     public update() : void{
 
         this.y = this.y + this.ySpeed
-        this.draw()
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
 
     

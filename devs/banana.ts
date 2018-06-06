@@ -2,14 +2,15 @@
 
 class Banana extends GameElement{
 
-
+    
     constructor(x : number, y : number){
-        super(x,y, "banana")
+        super( x, y, "banana")
         
-        this.draw()
+        
     }
     
     public update() : void{
+        
 
     }
 
@@ -17,8 +18,9 @@ class Banana extends GameElement{
         return this.div.getBoundingClientRect()
     }
 
-    /*public removeBanana(){
+    public removeBanana(){
         this.div.remove()
-        
-    }*/
+    }
+
+   
 }
