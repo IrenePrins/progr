@@ -118,26 +118,24 @@ var Monkey = (function (_super) {
     Monkey.prototype.onKeyDown = function (event) {
         switch (event.keyCode) {
             case 38:
-                this.speedUp = -100;
+                this.speedUp = -10;
                 this.y = this.y + this.speedUp;
                 this.update();
                 break;
             case 40:
-                this.speedDown = 100;
+                this.speedDown = 10;
                 this.y = this.y + this.speedDown;
                 this.update();
                 break;
             case 37:
-                this.speedLeft = -100;
+                this.speedLeft = -10;
                 this.x = this.x + this.speedLeft;
-                console.log("case 37 wordt aangeroepen");
                 this.update();
                 this.div.classList.add("monkeyleft");
                 break;
             case 39:
-                this.speedRight = 100;
+                this.speedRight = 10;
                 this.x = this.x + this.speedRight;
-                console.log("case 39 wordt aangeroepen");
                 this.update();
                 this.div.classList.remove("monkeyleft");
                 break;
