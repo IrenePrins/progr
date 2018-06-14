@@ -55,9 +55,40 @@ var Fireball = (function (_super) {
 }(GameElement));
 var Game = (function () {
     function Game() {
+        this.screen = new Startmenu(this);
+        this.gameloop();
+    }
+    Game.prototype.gameloop = function () {
+        var _this = this;
+        this.screen.update();
+        requestAnimationFrame(function () { return _this.gameloop; });
+    };
+    Game.prototype.showLevel = function () {
+        document.body.innerHTML = "";
+        console.log("test");
+        this.screen = new Level(this);
+    };
+    Game.prototype.showGameover = function (screen) {
+        this.screen = screen;
+    };
+    return Game;
+}());
+window.addEventListener("load", function () { return new Game(); });
+var Gameover = (function () {
+    function Gameover(g) {
+        this.game = g;
+        this.div = document.createElement("gameover");
+        document.body.appendChild(this.div);
+        this.div.innerHTML = "OMG !<br> " + "U COLLECTED 10 BANANAS U SO GREAT!!";
+    }
+    return Gameover;
+}());
+var Level = (function () {
+    function Level(g) {
         this.bananas = [];
         this.fireballs = [];
         this.scores = [0];
+        this.game = g;
         this.monkey = new Monkey(500, 500);
         for (var i = 0; i < 10; i++) {
             this.bananas.push(new Banana((Math.random() * (window.innerWidth - 162)), Math.random() * (window.innerHeight - 120)));
@@ -66,10 +97,9 @@ var Game = (function () {
             this.fireballs.push(new Fireball(Math.random() * (window.innerWidth - 130), Math.random() * -3000));
         }
         this.score = document.body.getElementsByTagName("score")[0];
-        this.gameLoop();
+        this.update();
     }
-    Game.prototype.gameLoop = function () {
-        var _this = this;
+    Level.prototype.update = function () {
         for (var _i = 0, _a = this.bananas; _i < _a.length; _i++) {
             var banana = _a[_i];
             if (this.checkCollision(banana.getRectangle(), this.monkey.getRectangle())) {
@@ -80,24 +110,22 @@ var Game = (function () {
                 this.updateScore();
             }
         }
-        requestAnimationFrame(function () { return _this.gameLoop(); });
     };
-    Game.prototype.checkCollision = function (a, b) {
+    Level.prototype.checkCollision = function (a, b) {
         return (a.left <= b.right &&
             b.left <= a.right &&
             a.top <= b.bottom &&
             b.top <= a.bottom);
     };
-    Game.prototype.deleteBanana = function (banana) {
+    Level.prototype.deleteBanana = function (banana) {
         var i = this.bananas.indexOf(banana);
         this.bananas.splice(i, 1);
     };
-    Game.prototype.updateScore = function () {
+    Level.prototype.updateScore = function () {
         this.score.innerHTML = "Aantal bananen: " + this.scores[0];
     };
-    return Game;
+    return Level;
 }());
-window.addEventListener("load", function () { return new Game(); });
 var Monkey = (function (_super) {
     __extends(Monkey, _super);
     function Monkey(x, y) {
@@ -162,4 +190,19 @@ var Monkey = (function (_super) {
     };
     return Monkey;
 }(GameElement));
+var Startmenu = (function () {
+    function Startmenu(g) {
+        this.game = g;
+        this.div = document.createElement("start");
+        document.body.appendChild(this.div);
+        this.div.innerHTML = "START!";
+        this.div.addEventListener("click", this.clickHandler);
+    }
+    Startmenu.prototype.update = function () {
+    };
+    Startmenu.prototype.clickHandler = function () {
+        this.game.showLevel();
+    };
+    return Startmenu;
+}());
 //# sourceMappingURL=main.js.map
