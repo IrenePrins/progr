@@ -10,7 +10,7 @@
     * Inheritance
     * idk
 
-    Encapsulation
+   ### Encapsulation
 
     De betekenis van encapsulation is dat elk object van een game afgeschermd is van elkaar. Ze kunnen elkaar niet 'zien'. De game weet dat er een aap, banaan en vuurbal is. Maar de aap weet niet dat er een banaan is en ook niet dat er een vuurbal is. Echter kan er via encapsulation informatie worden uitgewisseld. Dit werkt alsof ze met een luikje toch bij elkaar kunnen komen.
 
@@ -32,7 +32,7 @@
 
      ```
 
-     Inheritance
+     ### Inheritance
 
      Bij inheritance maak je gebruik van een bestand die boven de andere classes staan. Het is een blauwdruk van de blauwdrukken. Het is een abstractielevel erboven als een soort parentclass. Bepaalde elementen kunnen bij meerdere classen voorkomen, zoals x en y en het aanmaken van het object. Om een variabele aan te spreken in de gameObject of gameelement class gebruik je bij de childclasses super. Met super kan je variabele doorsturen naar de parent class. Deze variabele stuur je mee via de constructor in de game.
 
