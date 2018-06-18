@@ -1,24 +1,33 @@
-class Game{
-    private screen: any
+class Game {
+
+    public currentscreen : any
+    
 
     constructor(){
-        this.screen = new Startmenu(this)
+        this.currentscreen = new Gameover(this)
         this.gameloop()
     }
 
+
+
     public gameloop(){
-        this.screen.update()
-        requestAnimationFrame(() => this.gameloop)
+        this.currentscreen.update()
+        requestAnimationFrame(() => this.gameloop())
     }
 
-    public showLevel(){
+    public startlevel(){
         document.body.innerHTML = ""
-        console.log("test")
-        this.screen = new Level(this)
+        this.currentscreen = new Level(this)
+        console.log("level gestart")
     }
 
-    public showGameover(screen : Gameover){
-        this.screen = screen
+    public startGameOver(){
+        document.body.innerHTML = ""
+        this.currentscreen = new Gameover(this)
+        console.log("gameover gestart")
     }
+    
+
+    
 }
-window.addEventListener("load" , ()=> new Game())
+window.addEventListener("load", () => new Game())

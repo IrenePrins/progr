@@ -24,6 +24,13 @@ var GameElement = (function () {
     };
     return GameElement;
 }());
+var background = (function (_super) {
+    __extends(background, _super);
+    function background() {
+        return _super.call(this, window.innerHeight, window.innerWidth, "background") || this;
+    }
+    return background;
+}(GameElement));
 var Banana = (function (_super) {
     __extends(Banana, _super);
     function Banana(x, y) {
@@ -55,28 +62,29 @@ var Fireball = (function (_super) {
 }(GameElement));
 var Game = (function () {
     function Game() {
-        this.screen = new Startmenu(this);
+        this.currentscreen = new Gameover(this);
         this.gameloop();
     }
     Game.prototype.gameloop = function () {
         var _this = this;
-        this.screen.update();
-        requestAnimationFrame(function () { return _this.gameloop; });
+        this.currentscreen.update();
+        requestAnimationFrame(function () { return _this.gameloop(); });
     };
-    Game.prototype.showLevel = function () {
+    Game.prototype.startlevel = function () {
         document.body.innerHTML = "";
-        console.log("test");
-        this.screen = new Level(this);
+        this.currentscreen = new Level(this);
+        console.log("level gestart");
     };
-    Game.prototype.showGameover = function (screen) {
-        this.screen = screen;
+    Game.prototype.startGameOver = function () {
+        document.body.innerHTML = "";
+        this.currentscreen = new Gameover(this);
+        console.log("gameover gestart");
     };
     return Game;
 }());
 window.addEventListener("load", function () { return new Game(); });
 var Gameover = (function () {
     function Gameover(g) {
-        this.game = g;
         this.div = document.createElement("gameover");
         document.body.appendChild(this.div);
         this.div.innerHTML = "OMG !<br> " + "U COLLECTED 10 BANANAS U SO GREAT!!";
@@ -87,16 +95,19 @@ var Level = (function () {
     function Level(g) {
         this.bananas = [];
         this.fireballs = [];
-        this.scores = [0];
+        this.counter = 0;
         this.game = g;
+        this.wall = new Wall;
         this.monkey = new Monkey(500, 500);
+        this.monkey2 = new Monkey(500, 500);
         for (var i = 0; i < 10; i++) {
             this.bananas.push(new Banana((Math.random() * (window.innerWidth - 162)), Math.random() * (window.innerHeight - 120)));
         }
         for (var i = 0; i < 10; i++) {
             this.fireballs.push(new Fireball(Math.random() * (window.innerWidth - 130), Math.random() * -3000));
         }
-        this.score = document.body.getElementsByTagName("score")[0];
+        this.score = document.createElement("score");
+        this.score.innerHTML = 'score = ';
         this.update();
     }
     Level.prototype.update = function () {
@@ -104,11 +115,21 @@ var Level = (function () {
             var banana = _a[_i];
             if (this.checkCollision(banana.getRectangle(), this.monkey.getRectangle())) {
                 console.log("collision functie wordt aangeroepen");
-                this.scores[0] = this.scores[0] + 1;
+                this.counter++;
+                this.score.innerHTML = 'score = ' + this.counter;
                 this.deleteBanana(banana);
                 banana.removeBanana();
-                this.updateScore();
             }
+            if (this.checkCollision(banana.getRectangle(), this.monkey2.getRectangle())) {
+                console.log("collision functie wordt aangeroepen");
+                this.counter++;
+                this.score.innerHTML = 'score = ' + this.counter;
+                this.deleteBanana(banana);
+                banana.removeBanana();
+            }
+        }
+        if (this.counter == 10 || this.counter === 10) {
+            this.game.startGameOver();
         }
     };
     Level.prototype.checkCollision = function (a, b) {
@@ -120,9 +141,6 @@ var Level = (function () {
     Level.prototype.deleteBanana = function (banana) {
         var i = this.bananas.indexOf(banana);
         this.bananas.splice(i, 1);
-    };
-    Level.prototype.updateScore = function () {
-        this.score.innerHTML = "Aantal bananen: " + this.scores[0];
     };
     return Level;
 }());
@@ -192,17 +210,34 @@ var Monkey = (function (_super) {
 }(GameElement));
 var Startmenu = (function () {
     function Startmenu(g) {
+        var _this = this;
+        this.gameStarted = false;
         this.game = g;
         this.div = document.createElement("start");
         document.body.appendChild(this.div);
         this.div.innerHTML = "START!";
-        this.div.addEventListener("click", this.clickHandler);
+        this.div.addEventListener("click", function () { return _this.clickHandler(); });
+        this.x = window.innerWidth / 2;
+        this.y = window.innerHeight / 2;
     }
-    Startmenu.prototype.update = function () {
-    };
     Startmenu.prototype.clickHandler = function () {
-        this.game.showLevel();
+        this.gameStarted = true;
+        console.log("clickhandler");
+    };
+    Startmenu.prototype.update = function () {
+        console.log(this.gameStarted);
+        if (this.gameStarted === true) {
+            this.game.startlevel();
+            console.log("test");
+        }
     };
     return Startmenu;
 }());
+var Wall = (function (_super) {
+    __extends(Wall, _super);
+    function Wall() {
+        return _super.call(this, window.innerWidth / 2, window.innerHeight, "wall") || this;
+    }
+    return Wall;
+}(GameElement));
 //# sourceMappingURL=main.js.map
