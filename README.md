@@ -32,7 +32,7 @@
 
      ```
 
-     ### Inheritance
+ ### Inheritance
 
      Bij inheritance maak je gebruik van een bestand die boven de andere classes staan. Het is een blauwdruk van de blauwdrukken. Het is een abstractielevel erboven als een soort parentclass. Bepaalde elementen kunnen bij meerdere classen voorkomen, zoals x en y en het aanmaken van het object. Om een variabele aan te spreken in de gameObject of gameelement class gebruik je bij de childclasses super. Met super kan je variabele doorsturen naar de parent class. Deze variabele stuur je mee via de constructor in de game.
 
@@ -40,7 +40,7 @@
 
      In mijn spel heb ik voor de parentclass een GameElement.ts bestand aangemaakt. Hier wordt de x en y positie bepaald van de bananen en fireballs. Ook wordt elk gameobject gedrawt via de parentclass. Ik geef in de game.ts een x en y mee naar de classes toe. Bij de classes wordt er een type doorgegeven via super naar de parentclass.
 
-     ## Review
+   ## Review
 
      Ik heb de game van Civan gereviewt. De link naar zijn game is:
 
