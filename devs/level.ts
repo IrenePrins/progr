@@ -1,18 +1,7 @@
-
-
 class Level{
 
     private bananas : Banana[] = []
-    private fireballs : Array<Fireball> = []
-    
-    // private scores: number = 0
-    // private scores2 : number = 0
     private monkey : Monkey
-    private monkey2 : Monkey
-
-    private x : number = 0
-    private y : number = 0
-    
     private background : any
     private game : Game
     private score : Element
@@ -31,16 +20,14 @@ class Level{
             
 
              this.monkey = new Monkey(500 , 500)
-             this.monkey2 = new Monkey(500, 500)
+             
                     
             for(let i = 0; i < 10; i++){
                 this.bananas.push(new Banana((Math.random() * (window.innerWidth - 162)) , Math.random() * (window.innerHeight - 120)))
                 
             }
 
-            for(let i = 0; i < 10 ; i++){
-                this.fireballs.push(new Fireball(Math.random() * (window.innerWidth - 130), Math.random() * - 3000))
-            }
+            
             
             this.score = document.createElement("score")
             this.score.innerHTML = 'score = ' 
@@ -60,21 +47,8 @@ class Level{
                     this.score.innerHTML = 'score = ' + this.counter
                     this.deleteBanana(banana)
                     banana.removeBanana()
-                    // this.updateScore()
                 }
-                if(this.checkCollision(banana.getRectangle(), this.monkey2.getRectangle())){
-                    console.log("collision functie wordt aangeroepen")
-                    this.counter++
-                    this.score.innerHTML = 'score = ' + this.counter
-                    this.deleteBanana(banana)
-                    banana.removeBanana()
-                    //this.updateScore()
-                }
-
-                // if(this.checkCollision(banana.getRectangle(), this.wall.getRectangle())){
-
-                // }
-
+                
             } 
             
         if(this.counter == 10 || this.counter === 10){
@@ -91,7 +65,7 @@ class Level{
                 b.top <= a.bottom)
         }
 
-        public deleteBanana(banana: Banana) : void{
+        private deleteBanana(banana: Banana) : void{
             
             //plek van banana in array
             let i = this.bananas.indexOf(banana)
@@ -99,24 +73,10 @@ class Level{
             //verwijderd de banaan in array
             this.bananas.splice(i, 1)
         }
-
-        // private updateScore(){
-        //     this.score.innerHTML = `Aantal bananen: ${this.scores[0]}`
-            
-        // }
-
-        
-        
     
 }    
        
 
-        /*
-        volgende stap:
-        collision met fireball en monkey
         
-        scores op scherm
-        gamestates
-        */
     
     

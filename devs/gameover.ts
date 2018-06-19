@@ -3,7 +3,7 @@ class Gameover{
     private div : HTMLElement
    
     
-    constructor(g : Game){
+    constructor(){
         
         this.div = document.createElement("gameover")
         document.body.appendChild(this.div)

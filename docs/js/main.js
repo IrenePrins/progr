@@ -46,20 +46,6 @@ var Banana = (function (_super) {
     };
     return Banana;
 }(GameElement));
-var Fireball = (function (_super) {
-    __extends(Fireball, _super);
-    function Fireball(x, y) {
-        var _this = _super.call(this, x, y, "fireball") || this;
-        _this.ySpeed = 3;
-        _this.update();
-        return _this;
-    }
-    Fireball.prototype.update = function () {
-        this.y = this.y + this.ySpeed;
-        this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
-    };
-    return Fireball;
-}(GameElement));
 var Game = (function () {
     function Game() {
         this.currentscreen = new Startmenu(this);
@@ -77,14 +63,14 @@ var Game = (function () {
     };
     Game.prototype.startGameOver = function () {
         document.body.innerHTML = "";
-        this.currentscreen = new Gameover(this);
+        this.currentscreen = new Gameover();
         console.log("gameover gestart");
     };
     return Game;
 }());
 window.addEventListener("load", function () { return new Game(); });
 var Gameover = (function () {
-    function Gameover(g) {
+    function Gameover() {
         this.div = document.createElement("gameover");
         document.body.appendChild(this.div);
         this.div.innerHTML = "OMG !<br> " + "U COLLECTED 10 BANANAS U SO GREAT!!";
@@ -94,9 +80,6 @@ var Gameover = (function () {
 var Level = (function () {
     function Level(g) {
         this.bananas = [];
-        this.fireballs = [];
-        this.x = 0;
-        this.y = 0;
         this.counter = 0;
         this.background = document.createElement("background");
         document.body.appendChild(this.background);
@@ -104,12 +87,8 @@ var Level = (function () {
         this.background.style.width = window.innerWidth;
         this.game = g;
         this.monkey = new Monkey(500, 500);
-        this.monkey2 = new Monkey(500, 500);
         for (var i = 0; i < 10; i++) {
             this.bananas.push(new Banana((Math.random() * (window.innerWidth - 162)), Math.random() * (window.innerHeight - 120)));
-        }
-        for (var i = 0; i < 10; i++) {
-            this.fireballs.push(new Fireball(Math.random() * (window.innerWidth - 130), Math.random() * -3000));
         }
         this.score = document.createElement("score");
         this.score.innerHTML = 'score = ';
@@ -119,13 +98,6 @@ var Level = (function () {
         for (var _i = 0, _a = this.bananas; _i < _a.length; _i++) {
             var banana = _a[_i];
             if (this.checkCollision(banana.getRectangle(), this.monkey.getRectangle())) {
-                console.log("collision functie wordt aangeroepen");
-                this.counter++;
-                this.score.innerHTML = 'score = ' + this.counter;
-                this.deleteBanana(banana);
-                banana.removeBanana();
-            }
-            if (this.checkCollision(banana.getRectangle(), this.monkey2.getRectangle())) {
                 console.log("collision functie wordt aangeroepen");
                 this.counter++;
                 this.score.innerHTML = 'score = ' + this.counter;
@@ -153,7 +125,6 @@ var Monkey = (function (_super) {
     __extends(Monkey, _super);
     function Monkey(x, y) {
         var _this = _super.call(this, x, y, "monkey") || this;
-        _this.keyObjects = new Array(255);
         _this.speedLeft = 0;
         _this.speedRight = 0;
         _this.speedDown = 0;

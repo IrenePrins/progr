@@ -23,7 +23,7 @@ class Game {
 
     public startGameOver(){
         document.body.innerHTML = ""
-        this.currentscreen = new Gameover(this)
+        this.currentscreen = new Gameover()
         console.log("gameover gestart")
     }
     

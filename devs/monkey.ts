@@ -2,15 +2,10 @@
 
  class Monkey extends GameElement {
 
-    keyObjects = new Array(255)
     private speedLeft : number = 0
     private speedRight : number = 0
     private speedDown : number = 0
     private speedUp : number = 0
-
-    // private speedX : number = 0
-    // private speedY : number = 0
-
     
     constructor(x : number, y : number){
         super( x, y, "monkey")
@@ -20,10 +15,7 @@
         document.body.addEventListener('keydown',(e: KeyboardEvent) => this.onKeyDown(e));
         document.body.addEventListener('keyup',(e: KeyboardEvent) => this.onKeyUp(e));
        
-       
         }
-
-    
 
     public update() : void{
         
