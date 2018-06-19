@@ -15,21 +15,18 @@ class Startmenu{
 
         this.x = window.innerWidth/2
         this.y = window.innerHeight/2
-        
+               
     }
 
     
 
     private clickHandler(){
         this.gameStarted = true
-        console.log("clickhandler")
     }
 
     public update() : void{
-        console.log(this.gameStarted)
         if(this.gameStarted === true){
             this.game.startlevel()
-            console.log("test")
         }
 
     }

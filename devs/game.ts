@@ -4,7 +4,7 @@ class Game {
     
 
     constructor(){
-        this.currentscreen = new Gameover(this)
+        this.currentscreen = new Startmenu(this)
         this.gameloop()
     }
 

@@ -1,4 +1,5 @@
 
+
 class Level{
 
     private bananas : Banana[] = []
@@ -8,8 +9,10 @@ class Level{
     // private scores2 : number = 0
     private monkey : Monkey
     private monkey2 : Monkey
+
+    private x : number = 0
+    private y : number = 0
     
-    private wall : Wall
     private background : any
     private game : Game
     private score : Element
@@ -19,10 +22,13 @@ class Level{
    
         constructor(g : Game){
 
-            //super()
+            this.background = document.createElement("background")
+            document.body.appendChild(this.background)
+            this.background.style.height = window.innerHeight
+            this.background.style.width = window.innerWidth   
+
             this.game = g
             
-            this.wall = new Wall
 
              this.monkey = new Monkey(500 , 500)
              this.monkey2 = new Monkey(500, 500)

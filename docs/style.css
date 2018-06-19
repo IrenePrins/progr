@@ -17,7 +17,9 @@ monkey {
 }
 
 background{
-    background-image: url(../assets/jungle.jpg)
+    background-image: url("../assets/jungle.jpg");
+    width: 1517px;
+    height: 716px;
 }
 
 .monkey {
@@ -59,7 +61,17 @@ wall{
 }
 
 start{
-    /*background-image: url("../assets/brick-block-platforms.png")*/
+    margin-left: 350px;
+    margin-top: 400px;
+    text-align: center;
+    background-color: #ffb821;
+    padding: 50px 100px 50px 100px;
+    font-family: Stencil, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    width: 600px;
+    height: 100px;
+    border: black 4px solid
+
 }
 
 gameover{

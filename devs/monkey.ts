@@ -78,7 +78,7 @@
             break
         }
         
-    }    
+    }
     
     public getRectangle(){
         return this.div.getBoundingClientRect()
