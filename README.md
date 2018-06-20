@@ -34,7 +34,9 @@
         } 
 
      ```
-     Ik heb encapsulation in mijn game gedaan door mijn variabele privated te maken. Zoals te zien is in mijn klassendiagram heb ik in mijn parentclass de variabelen protected gemaakt. Hierdoor kunnen ze alleen via de childclasses worden benaderd.  De childclasses zijn Monkey en Banana.
+     Ik heb encapsulation in mijn game gedaan door mijn variabele privated te maken. Zoals te zien is in mijn
+     klassendiagram heb ik in mijn parentclass de variabelen protected gemaakt. Hierdoor kunnen ze alleen via de
+     childclasses worden benaderd.  De childclasses zijn Monkey en Banana.
      Sommige functies zoals update moeten benaderd kunnen worden vanuit meerdere classen die heb ik public gemaakt.
      Het is beter om zoveel mogelijk op private te houden. 
 
@@ -61,7 +63,9 @@
 
 ### Composition
 
-    Composition is de relatie die verschillende classen met elkaar hebben. Zo heeft in mijn game de class game een class startmenu, gameover en level. Class level heeft dus een class monkey en een class banana. Je geeft de relaties aan met has a:
+    Composition is de relatie die verschillende classen met elkaar hebben. Zo heeft in mijn game de
+    class game een class startmenu, gameover en level. Class level heeft dus een class monkey en een
+    class banana. Je geeft de relaties aan met has a:
 
 *   Game has a startmenu. 
 *   Game has a level.
@@ -81,7 +85,8 @@
 
         "De game gebruikt een externe library uit de lijst in deze modulewijzer."
     
-    Ik heb gekozen voor howler.js. Ik heb online een muziekje gevonden die ik heel het spel laat horen. De code voor de library is te vinden in howler.js.
+    Ik heb gekozen voor howler.js. Ik heb online een muziekje gevonden die ik heel het spel laat horen.
+    De code voor de library is te vinden in howler.js.
 
    ## Review
 
