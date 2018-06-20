@@ -34,6 +34,9 @@
         } 
 
      ```
+     Ik heb encapsulation in mijn game gedaan door mijn variabele privated te maken. Zoals te zien is in mijn klassendiagram heb ik in mijn parentclass de variabelen protected gemaakt. Hierdoor kunnen ze alleen via de childclasses worden benaderd.  De childclasses zijn Monkey en Banana.
+     Sommige functies zoals update moeten benaderd kunnen worden vanuit meerdere classen die heb ik public gemaakt.
+     Het is beter om zoveel mogelijk op private te houden. 
 
  ### Inheritance
 
@@ -51,6 +54,34 @@
      en y positie bepaald van de bananen en fireballs. Ook wordt elk gameobject gedrawt via de
      parentclass. Ik geef in de game.ts een x en y mee naar de classes toe. Bij de classes wordt er
      een type doorgegeven via super naar de parentclass.
+     Je geeft inheritance aan met is a:
+
+*   Banana is a gameElement.
+*   Monkey is a gameElement.
+
+### Composition
+
+    Composition is de relatie die verschillende classen met elkaar hebben. Zo heeft in mijn game de class game een class startmenu, gameover en level. Class level heeft dus een class monkey en een class banana. Je geeft de relaties aan met has a:
+
+*   Game has a startmenu. 
+*   Game has a level.
+    * Level has a Banana.
+    * Level has a Monkey.
+*   Game has a gameover.
+
+### Klassendiagram
+
+    Ik heb een klassendiagram gemaakt van mijn game:
+
+![alt text](assets/classDiagram.png)
+
+### Extra uitdaging
+
+    Je kon kiezen uit verschillende uitdagingen. De uitdaging die ik gekozen heb is: 
+
+        "De game gebruikt een externe library uit de lijst in deze modulewijzer."
+    
+    Ik heb gekozen voor howler.js. Ik heb online een muziekje gevonden die ik heel het spel laat horen. De code voor de library is te vinden in howler.js.
 
    ## Review
 
